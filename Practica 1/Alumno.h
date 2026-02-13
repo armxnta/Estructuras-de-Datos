@@ -24,4 +24,5 @@ int compararMatricula(void *datoA,void *datoB);
 int compararNombre(void *datoA,void *datoB);
 int compararSemestre(void *datoA,void *datoB);
 int compararPromedio(void *datoA,void *datoB);
+int verificarMatricula(void *datoA,void *datoB);
 #endif

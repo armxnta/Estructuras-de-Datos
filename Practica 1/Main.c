@@ -18,10 +18,8 @@ int main()
         switch (opc){
 
             case 1: {
-                Alumno *nuevo = crearAlumno();
-                agregarEnOrden(&lista, nuevo);
-                printf("Alumno registrado correctamente\n");
-                break;
+                registrarAlumno(&lista);
+				break;
             }
 
             case 2: {

@@ -1,17 +1,17 @@
 #include "Alumno.h"
 #include "captura.h"
+
+
 Alumno* crearAlumno(void)
 {
 	Alumno *nuevo = calloc(1,sizeof(Alumno));
+
 	inputEntero("\n Matricula: ",&nuevo->matricula);
 	inputCadena("\n Nombre: ",nuevo->nombre,LEN);
 	inputEntero("\n Semetres: ",&nuevo->semestre);
 	inputFloat("\n Promedio: ",&nuevo->promedio);
 	return nuevo;	
 }
-
-
-
 
 void imprimirAlumno(void *dato)
 {
@@ -48,3 +48,12 @@ int compararPromedio(void *datoA,void *datoB)
 	else if( alumA->promedio > alumB->promedio) return 1;
 	else return 0;
 }
+int verificarMatricula(void *datoA,void *datoB)
+{
+	Alumno *alumA = datoA,*alumB = datoB;
+	if(alumA->matricula == alumB->matricula)
+		return 0;
+	else
+		return 1;
+}
+
