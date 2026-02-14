@@ -325,23 +325,16 @@ void reordenar(Lista *lista, int (*comparar)(void*,void*))
 
 void registrarAlumno(Lista *lista)
 {
-	Alumno *nuevo = crearAlumno();
+    Alumno *nuevo = crearAlumno();
 
-	Nodo *aux = lista->inicio;
+    Resultado res = buscar(*lista, nuevo);
 
-	while (aux != NULL)
-	{
-		Alumno *existente = (Alumno *)aux->dato;
+    if (res.enco)
+    {
+        printf("Ya existe esa matricula\n");
+        free(nuevo);
+        return;
+    }
 
-		if (existente->matricula == nuevo->matricula)
-		{
-			printf("Ya existe esa matricula\n");
-			free(nuevo); 
-			return; 
-		}
-
-		aux = aux->sig;
-	}
-
-	agregarEnOrden(lista, nuevo);
+    agregarEnOrden(lista, nuevo);
 }
