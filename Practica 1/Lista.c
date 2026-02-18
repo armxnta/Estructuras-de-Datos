@@ -327,7 +327,7 @@ void registrarAlumno(Lista *lista)
 {
     Alumno *nuevo = crearAlumno();
 
-    Resultado res = buscar(*lista, nuevo);
+    Resultado res = buscarMat(*lista, nuevo);
 
     if (res.enco)
     {
@@ -337,4 +337,21 @@ void registrarAlumno(Lista *lista)
     }
 
     agregarEnOrden(lista, nuevo);
+}
+
+Resultado buscarMat(Lista lista,void *dato)
+{	
+	Resultado resultado = {NULL,NULL,NULL};
+	for (Nodo *q = NULL,*p = lista.inicio; p!= NULL ;q=p, p = p->sig)
+	{
+		if( compararMatricula(dato, p->dato) == 0)
+		{
+			//LO ENCONTRAMOS
+			resultado.ante = q;
+			resultado.enco = p;
+			resultado.dato = p->dato;
+			break;
+		}
+	}
+	return resultado;
 }

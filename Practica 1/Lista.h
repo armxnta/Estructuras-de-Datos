@@ -26,6 +26,7 @@ typedef struct
 }Resultado;
 
 Resultado buscar(Lista lista,void *dato);
+Resultado buscarMat(Lista lista,void *dato);
 void imprimirResultado(Lista lista,Resultado resultado);
 void imprimirLista(Lista lista);
 
