@@ -46,5 +46,5 @@ void eliminarDato(Lista *lista,void *dato);
 void* removerInicio(Lista *lista);
 
 void reordenar(Lista *lista, int (*comparar)(void*,void*));
-void registrarAlumno(Lista *lista);
+void registrarAlumno(Lista *lista, void *);
 #endif

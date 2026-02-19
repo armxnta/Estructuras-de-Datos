@@ -1,7 +1,6 @@
-
 //LISTA.c
 #include "Lista.h"
-#include "Alumno.h"
+
 
 void agregarFinal(Lista *lista,void *dato)
 {
@@ -310,33 +309,18 @@ void reordenar(Lista *lista, int (*comparar)(void*,void*))
 	
 }
 
-/*int verificarMatricula(Lista *lista, void *nuevo)
+void registrarAlumno(Lista *lista, void *dato)
 {
-	Nodo *aux = lista->inicio;
-	
-	while(aux != NULL)
-	{
-		if(lista->comparar(aux->dato, nuevomatricula) == 0)
-			return 1;
-		aux = aux->sig;
-	}
-	return 0;
-}*/
 
-void registrarAlumno(Lista *lista)
-{
-    Alumno *nuevo = crearAlumno();
-
-    Resultado res = buscarMat(*lista, nuevo);
+    Resultado res = buscarMat(*lista, dato);
 
     if (res.enco)
     {
         printf("Ya existe esa matricula\n");
-        free(nuevo);
         return;
     }
 
-    agregarEnOrden(lista, nuevo);
+    agregarEnOrden(lista, dato);
 }
 
 Resultado buscarMat(Lista lista,void *dato)
@@ -344,7 +328,7 @@ Resultado buscarMat(Lista lista,void *dato)
 	Resultado resultado = {NULL,NULL,NULL};
 	for (Nodo *q = NULL,*p = lista.inicio; p!= NULL ;q=p, p = p->sig)
 	{
-		if( compararMatricula(dato, p->dato) == 0)
+		if(lista.comparar(dato, p->dato) == 0)
 		{
 			//LO ENCONTRAMOS
 			resultado.ante = q;

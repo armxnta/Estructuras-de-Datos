@@ -6,7 +6,7 @@ int main()
 {
     int opc = 0;
 
-    Lista lista = {NULL,NULL,0,imprimirAlumno,compararNombre,free};
+    Lista lista = {NULL,NULL,0,imprimirAlumno,compararMatricula,free};
 
     do{
         printf("\n\n----------- MENU ------------\n");
@@ -18,7 +18,19 @@ int main()
         switch (opc){
 
             case 1: {
-                registrarAlumno(&lista);
+				Alumno *nuevo = crearAlumno(); 
+
+				Resultado res = buscarMat(lista, nuevo);
+
+				if (res.enco != NULL)
+				{
+					printf("Ya existe esa matricula\n");
+					free(nuevo);  
+				}
+				else
+				{
+					agregarEnOrden(&lista, nuevo); 
+				}
 				break;
             }
 
